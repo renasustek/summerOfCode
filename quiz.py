@@ -17,19 +17,15 @@ Press 5: Exit""")
     else:
         print("Invalid option")
         startUpMenu()
-def defExitOption():
-    extOption = input("Would you like to exit:(y/n)")
-    if exitOption == "y":
-        return startUpMenu()
-    elif exitOption == "n":
-        return login()
-    else:
-        return defExitOption()
+
 
 def mainMenu():
-    pass
+    print("main menu")
 
-def teacherLogin:
+def teacherArea():
+    print("Teachers area")
+
+def teacherLogin():
     print("Welcome, teacher")
     tLog="admin"
     tPw ="Password"
@@ -37,8 +33,8 @@ def teacherLogin:
     password=input("Enter your password: ")
     if tLog==teacher and pW==password:
         return teacherArea()
-    else:("Invalid details")
-        defExitOption()
+    else:("Invalid details"), startUpMenu()
+
 
 
 
@@ -55,24 +51,29 @@ def newUser():
 
 def studentlogin():
     global userName
-    print("Enter login details: ")
-    UserName = input("Enter login details")
+    studentLoginAttempts = 3
+    userName = input("Enter Your username")
     password = input("Enter Your password")
     file = open("Users.txt","r")
     for eachline in file:
         user,pW,name,surNam,age=eachline.split(":")
-        print("welcome",name)
-        return mainMenu()
+        if user==userName and pW==password:
+            print("welcome",name)
+            return mainMenu()
     print("Incorrect details")
-    defExitOption()
+#    if studentLoginAttempts > 1:          ####### FIX THIS FIRST #######
+#       studentLoginAttempts - 1           ####### FIX THIS FIRST #######
+#       return studentlogin()              ####### FIX THIS FIRST #######
+#       print(studentLoginAttempts)        ####### FIX THIS FIRST #######
+#   else:                                  ####### FIX THIS FIRST #######
+#       return startUpMenu()               ####### FIX THIS FIRST #######
 
 
 
-
-
-defExitOption()
-newUser()
 startUpMenu()
+teacherArea()
+newUser()
 studentlogin()
 teacherLogin()
+mainMenu()
 
