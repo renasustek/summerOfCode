@@ -1,0 +1,5 @@
+what hardware stores currently used instructions:RAM,ROM,CPU,ALU:1
+what hardware executes instructions:CPU,RAM:1
+what is the denary value of 0011:3,5:1
+what is the hex value for 10:9,A:2
+what does PC stand for in a CPU:Program Counter,Program Control:1
