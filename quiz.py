@@ -101,7 +101,7 @@ def teacherLogin():
     else:
         print("Invalid details")
         startUpMenu()
-####LOGIN####
+####LOGIN###
 
 ####QUIZ####
 def runQuiz(subjectDifficulty):
