@@ -37,12 +37,18 @@ def mainMenu():
 def teacherArea():
     print("Welcome to the teachers area")
     print("""Press 1: Search for a student
-        Press 2: Search by topic""")
+Press 2: Search by topic
+Press 3: Start menu
+Press 4: exit""")
     searchOption = input(">>")
     if searchOption == "1":
         findstudent()
     elif searchOption == "2":
         findTopic()
+    elif searchOption == "3":
+        startUpMenu()
+    elif searchOption == "4":
+        exit()
     else:
         print("Invalid option,try again")
         teacherArea()
@@ -143,11 +149,11 @@ def findTopic():
     averageScoreList = []
     highScore = 0
     highScoreNameList = []
-    print("PLease select a subject between math or comp")
+    print("PLease select a subject between Math or Comp")
     subject = input(">>")
-    while subject != "math" and subject != "comp":
+    while subject != "Math" and subject != "Comp":
         subject = input("invalid option, try again \n>>")
-    print("Select difficulty E M H \n>>>")
+    print("Select difficulty E M H")
     difficulty = input(">>")
     while difficulty != "H" and difficulty != "M" and difficulty != "E":
         difficulty = input("invalid option,try again\n>>")
@@ -156,7 +162,7 @@ def findTopic():
     for line in file:
         userName, testName, score = line.split(":")
         score = int(score)
-        if testName == fileName:  #
+        if testName == fileName:
             averageScoreList.append(score)
             if score > highScore:
                 highScore = score
@@ -170,7 +176,7 @@ def findTopic():
         print("for test", fileName)
         print("the highest score was", highScoreNameList)
         print("achived by", highScoreNameList)
-        aveScore = sum(averageScoreList / len(averageScoreList))
+        aveScore = sum(averageScoreList) / len(averageScoreList)
         print("the average score for this test is", aveScore)
     else:
         print("no one, no one has completed this test")
