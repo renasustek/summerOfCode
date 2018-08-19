@@ -18,29 +18,31 @@ Press 4: Exit""")
     else:
         "Invalid details", startUpMenu()
 
+
 def runQuiz(subjectDifficulty):
-    print("Opening file",subjectDifficulty)
+    print("Opening file", subjectDifficulty)
     score = 0
-    quizOption = open(subjectDifficulty+".txt","r")
+    quizOption = open(subjectDifficulty + ".txt", "r")
     for line in quizOption:
-        line=line.strip("\n")
-        ques,posAns,ansLoc=line.split(":")
+        line = line.strip("\n")
+        ques, posAns, ansLoc = line.split(":")
         print(ques)
-        posAns=posAns.split(",")
+        posAns = posAns.split(",")
         qno = 1
         for eachAns in posAns:
-            print("press",qno,"for",eachAns)
-            qno+=1
+            print("press", qno, "for", eachAns)
+            qno += 1
         answer = input(">>")
         if answer == ansLoc:
             print("correct")
             score += 1
         else:
             print("incorrect")
-    print(userName,"you scored",score)
-    quizOption = open("Results.txt","a")
-    quizOption.write(userName+":"+subjectDifficulty+":"+str(score)+"\n")
+    print(userName, "you scored", score)
+    quizOption = open("Results.txt", "a")
+    quizOption.write(userName + ":" + subjectDifficulty + ":" + str(score) + "\n")
     quizOption.close()
+
 
 def mainMenu():
     print("Welcome to the main menu")
@@ -52,11 +54,53 @@ def mainMenu():
     diff = input(">>>")
     while diff != "H" and diff != "M" and diff != "E":
         diff = input("Invalid option, try again \n>>")
-    fileName = subject+diff
+    fileName = subject + diff
     runQuiz(fileName)
+
 
 def teacherArea():
     print("Welcome to the teachers area")
+    print("""Press 1: Search for a student
+Press 2: Search by topic""")
+    searchOption = input(">>")
+    if searchOption == "1":
+        findstudent()
+    elif searchOption == "2":
+        findTopic()
+    else:
+        print("Invalid option,try again")
+        teacherArea()
+
+
+def findstudent():
+    someOneFound = False
+    print("Enter student's username")
+    lookingFor = input(">>")
+    findingResult = open("Results.txt", "r")
+    for line in findingResult:
+        userName, testName, score + line.split(":")
+        if userName == lookingFor:
+            print("For", testName, userName, "Scored: ", score)
+            someOneFound = True
+    if someOneFound == False:
+        print("sorry,", lookingFor, "is not in the system")
+    teacherArea()
+
+
+def findTopic():
+    print("What topic are you looking for")
+    averageScoreList = []
+    highScore = 0
+    highScoreNameList = []
+    print("PLease select a subject between math or comp")
+    subject = input(">>")
+    while subject != "Math" and subject != "comp":
+        subject = input("invalid option, try again \n>>")
+    print("Select difficulty E M H \n>>>")
+    difficulty = input(">>")
+    while difficulty != "H" and difficulty != "M" and difficulty != "E":
+        difficulty = input("invalid option,try again\n>>")
+
 
 
 def teacherLogin():
