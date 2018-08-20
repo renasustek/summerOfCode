@@ -1,5 +1,7 @@
 ####VARIABLES####
 loginAttempts = 3
+
+
 ####VARIABLES####
 
 ####MENUS####
@@ -21,6 +23,7 @@ Press 4: Exit""")
         print("Invalid option")
         startUpMenu()
 
+
 def mainMenu():
     print("Welcome to the main menu")
     print("Math or comp")
@@ -33,6 +36,7 @@ def mainMenu():
         diff = input("Invalid option, try again \n>>")
     fileName = subject + diff
     runQuiz(fileName)
+
 
 def teacherArea():
     print("Welcome to the teachers area")
@@ -52,6 +56,8 @@ Press 4: exit""")
     else:
         print("Invalid option,try again")
         teacherArea()
+
+
 ####MENUS####
 
 ####NEW USERS####
@@ -67,6 +73,8 @@ def newUser():
     newUsers.write(userName + ":" + password + ":" + name + ":" + surname + ":" + age + "\n")
     newUsers.close
     startUpMenu()
+
+
 ####NEW USERS####
 
 ####LOGIN####
@@ -79,7 +87,7 @@ def studentlogin():
         user, pW, name, surName, age = eachline.split(":")
         if user == userName and password == pW:
             print("welcome", name)
-            mainMenu()
+            return mainMenu()
         else:
             print("Invalid details")
             loginAttempts = loginAttempts - 1
@@ -89,6 +97,7 @@ def studentlogin():
             elif loginAttempts == 0:
                 print("You,ve run out of attemps, your now in the start up menu.")
                 startUpMenu()
+
 
 def teacherLogin():
     print("Welcome, teacher")
@@ -101,7 +110,9 @@ def teacherLogin():
     else:
         print("Invalid details")
         startUpMenu()
-####LOGIN###
+
+
+####LOGIN####
 
 ####QUIZ####
 def runQuiz(subjectDifficulty):
@@ -127,6 +138,8 @@ def runQuiz(subjectDifficulty):
     quizOption = open("Results.txt", "a")
     quizOption.write(userName + ":" + subjectDifficulty + ":" + str(score) + "\n")
     quizOption.close()
+
+
 ####QUIZ####
 
 ####TEACHER RECORCES####
@@ -141,8 +154,9 @@ def findstudent():
             print("For", testName, userName, "Scored: ", score)
             someOneFound = True
     if someOneFound == False:
-        print("sorry,", lookingFor, "is not in the system")
+        print("sorry,", lookingFor, "has not done any quizes.")
     teacherArea()
+
 
 def findTopic():
     print("What topic are you looking for")
@@ -181,6 +195,8 @@ def findTopic():
     else:
         print("no one, no one has completed this test")
         teacherArea()
+
+
 ####TEACHER RECORCES####
 
 
