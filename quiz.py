@@ -6,18 +6,18 @@ loginAttempts = 3
 
 ####MENUS####
 def startUpMenu():
-    print("""Press 1: Student login
+    startMenu=input("""Press 1: Student login
 Press 2: New user
 Press 3: Teacher login
-Press 4: Exit""")
-    option = input(">>")
-    if option == "1":
+Press 4: Exit
+>>""")
+    if startMenu == "1":
         studentlogin()
-    elif option == "2":
+    elif startMenu == "2":
         newUser()
-    elif option == "3":
+    elif startMenu == "3":
         teacherLogin()
-    elif option == "4":
+    elif startMenu == "4":
         exit()
     else:
         print("Invalid option")
@@ -26,12 +26,11 @@ Press 4: Exit""")
 
 def mainMenu():
     print("Welcome to the main menu")
-    print("Math or comp")
-    subject = input(">>>")
+    subject = input("Math or comp\n>>>")
     while subject != "Math" and subject != "Comp":
         subject = input("Inavlid option, try again. \n>> ")
     print("Difficulty,/E for easy/M for medium/H for hard")
-    diff = input(">>>")
+    diff = input("Difficulty,/E for easy/M for medium/H for hard\n>>")
     while diff != "H" and diff != "M" and diff != "E":
         diff = input("Invalid option, try again \n>>")
     fileName = subject + diff
@@ -40,11 +39,11 @@ def mainMenu():
 
 def teacherArea():
     print("Welcome to the teachers area")
-    print("""Press 1: Search for a student
+    searchOption=input("""Press 1: Search for a student
 Press 2: Search by topic
 Press 3: Start menu
-Press 4: exit""")
-    searchOption = input(">>")
+Press 4: exit
+>>""")
     if searchOption == "1":
         findstudent()
     elif searchOption == "2":
@@ -64,10 +63,10 @@ Press 4: exit""")
 def newUser():
     print("Welcome new user ")
     newUsers = open("Users.txt", "a")
-    name = input("Enter your name     : ")
-    surname = input("Enter your surname  : ")
-    age = input("Enter your age      : ")
-    password = input("Enter your password : ")
+    name = input("Enter your name\n>>")
+    surname = input("Enter your surname\n>>")
+    age = input("Enter your age\n>>")
+    password = input("Enter your password\n>>")
     userName = name[0:3] + age
     print(userName)
     newUsers.write(userName + ":" + password + ":" + name + ":" + surname + ":" + age + "\n")
@@ -88,15 +87,15 @@ def studentlogin():
         if user == userName and password == pW:
             print("welcome", name)
             return mainMenu()
-        else:
-            print("Invalid details")
-            loginAttempts = loginAttempts - 1
-            print("Amount of attempts left,", loginAttempts)
-            if loginAttempts > 0:
-                studentlogin()
-            elif loginAttempts == 0:
-                print("You,ve run out of attemps, your now in the start up menu.")
-                startUpMenu()
+    print("Invalid details")
+    loginAttempts = loginAttempts - 1
+    print("Amount of attempts left,", loginAttempts)
+    if loginAttempts > 0:
+        studentlogin()
+    elif loginAttempts == 0:
+        print("You,ve run out of attemps, your now in the start up menu.")
+        startUpMenu()
+        loginAttempts=3
 
 
 def teacherLogin():
