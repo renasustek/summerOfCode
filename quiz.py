@@ -111,7 +111,7 @@ def teacherLogin():
         startUpMenu()
 
 
-####LOGIN####
+####LOGIN###
 
 ####QUIZ####
 def runQuiz(subjectDifficulty):
