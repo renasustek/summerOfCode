@@ -1,12 +1,10 @@
 ####VARIABLES####
 loginAttempts = 3
-
-
 ####VARIABLES####
 
 ####MENUS####
 def startUpMenu():
-    startMenu=input("""Press 1: Student login
+    startMenu = input("""Press 1: Student login
 Press 2: New user
 Press 3: Teacher login
 Press 4: Exit
@@ -22,8 +20,6 @@ Press 4: Exit
     else:
         print("Invalid option")
         startUpMenu()
-
-
 def mainMenu():
     print("Welcome to the main menu")
     subject = input("Math or comp\n>>>")
@@ -35,11 +31,9 @@ def mainMenu():
         diff = input("Invalid option, try again \n>>")
     fileName = subject + diff
     runQuiz(fileName)
-
-
 def teacherArea():
     print("Welcome to the teachers area")
-    searchOption=input("""Press 1: Search for a student
+    searchOption = input("""Press 1: Search for a student
 Press 2: Search by topic
 Press 3: Start menu
 Press 4: exit
@@ -55,8 +49,6 @@ Press 4: exit
     else:
         print("Invalid option,try again")
         teacherArea()
-
-
 ####MENUS####
 
 ####NEW USERS####
@@ -72,8 +64,6 @@ def newUser():
     newUsers.write(userName + ":" + password + ":" + name + ":" + surname + ":" + age + "\n")
     newUsers.close
     startUpMenu()
-
-
 ####NEW USERS####
 
 ####LOGIN####
@@ -95,9 +85,7 @@ def studentlogin():
     elif loginAttempts == 0:
         print("You,ve run out of attemps, your now in the start up menu.")
         startUpMenu()
-        loginAttempts=3
-
-
+        loginAttempts = 3
 def teacherLogin():
     print("Welcome, teacher")
     tLog = "admin"
@@ -109,11 +97,9 @@ def teacherLogin():
     else:
         print("Invalid details")
         startUpMenu()
+####LOGIN####
 
-
-####LOGIN###
-
-####QUIZ####
+####QUIZ#####
 def runQuiz(subjectDifficulty):
     print("Opening file", subjectDifficulty)
     score = 0
@@ -137,8 +123,7 @@ def runQuiz(subjectDifficulty):
     quizOption = open("Results.txt", "a")
     quizOption.write(userName + ":" + subjectDifficulty + ":" + str(score) + "\n")
     quizOption.close()
-
-
+####QUIZ####
 ####QUIZ####
 
 ####TEACHER RECORCES####
@@ -155,15 +140,12 @@ def findstudent():
     if someOneFound == False:
         print("sorry,", lookingFor, "has not done any quizes.")
     teacherArea()
-
-
 def findTopic():
     print("What topic are you looking for")
     averageScoreList = []
     highScore = 0
     highScoreNameList = []
-    print("PLease select a subject between Math or Comp")
-    subject = input(">>")
+    subject = input("PLease select a subject between Math or Comp\n>>")
     while subject != "Math" and subject != "Comp":
         subject = input("invalid option, try again \n>>")
     print("Select difficulty E M H")
@@ -194,10 +176,7 @@ def findTopic():
     else:
         print("no one, no one has completed this test")
         teacherArea()
-
-
 ####TEACHER RECORCES####
-
 
 ####FUNCTIONS####
 startUpMenu()
